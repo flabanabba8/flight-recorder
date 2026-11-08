@@ -1,0 +1,17 @@
+name: flight-recorder
+version: "0.1.0"
+description: "Record every model call, tool call and result in a session, then export a self-contained scrubbable HTML timeline that shows where a run went wrong."
+author: "Flight Recorder contributors"
+license: GPL-3.0-or-later
+requires_hermes: ">=0.22.0"
+provides_tools:
+  - flight_list
+  - flight_summary
+  - flight_export
+  - flight_fork_brief
+provides_hooks:
+  - on_session_start
+  - pre_llm_call
+  - post_api_request
+  - post_tool_call
+  - post_llm_call

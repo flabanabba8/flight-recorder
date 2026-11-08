@@ -1,0 +1,6 @@
+# Verification
+
+- Eight local tests pass (also with ResourceWarning promoted to an error): every event kind recorded with token and failure counts; markers for the first failure, retries and a loop; secrets redacted before writing; the HTML export is one page with a restrictive content-security policy, no external URLs, and a hostile `</script><script>` / `<img onerror>` payload in a tool result cannot reach the page as markup; embedded data round-trips; fork brief covers only history up to the step; validation and hooks never raise; hook registration.
+- 2026-11-07 through Hermes's real path in a throwaway home: a scripted session (a user request, four simulated model calls, real `terminal` and `write_file` runs through `model_tools.handle_function_call`, whose own `post_tool_call` hook recorded them) produced 12 events; the summary reported 4 model calls, 5 tool calls, the first failure and the loop; the exported HTML rendered in headless Chrome (1280x860) with the strip, markers and cards.
+- A test run once wrote into the real Hermes data folder because a test called the hook without a test recorder; fixed by injecting the recorder, and the stray folder was removed.
+- Not yet verified: a live agent session with a real model, very large sessions, Windows, other browsers.
